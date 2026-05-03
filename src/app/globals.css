@@ -341,3 +341,184 @@ header {
   color: var(--dim);
   padding: 8px 0 4px;
 }
+
+/* ── mobile responsive ── */
+@media (max-width: 768px) {
+  /* header */
+  header {
+    padding: 12px 16px;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  
+  .logo {
+    font-size: 14px;
+  }
+  
+  .endpoint-wrap {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 8px;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  
+  .endpoint-wrap input,
+  .endpoint-new-input {
+    width: 100%;
+    max-width: none;
+  }
+  
+  .endpoint-sel {
+    max-width: none;
+    width: 100%;
+  }
+  
+  .interval-sel {
+    width: auto;
+  }
+  
+  .endpoint-wrap button {
+    flex: 1;
+    min-width: 80px;
+  }
+  
+  /* dashboard */
+  .dashboard {
+    padding: 16px;
+  }
+  
+  .hostname-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+  
+  .hostname-bar .meta {
+    margin-left: 0 !important;
+  }
+  
+  /* metric grid - 2 columns on mobile */
+  .metric-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  
+  .metric-card {
+    padding: 12px 14px;
+  }
+  
+  .metric-value {
+    font-size: 22px;
+  }
+  
+  /* rows - single column on mobile */
+  .row2,
+  .row3 {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  
+  .panel {
+    padding: 14px;
+  }
+  
+  /* charts */
+  .chart-wrap {
+    height: 120px;
+  }
+  
+  /* setup screen */
+  .setup-box {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px 24px;
+  }
+  
+  .setup h2 {
+    font-size: 16px;
+  }
+  
+  .setup p {
+    font-size: 11px;
+  }
+  
+  /* load bars */
+  .load-row {
+    gap: 8px;
+  }
+  
+  .load-label {
+    width: 30px;
+    font-size: 10px;
+  }
+  
+  .load-val {
+    width: 40px;
+    font-size: 11px;
+  }
+  
+  /* network */
+  .net-bps {
+    width: 70px;
+    font-size: 10px;
+  }
+  
+  /* uptime */
+  .uptime-big {
+    font-size: 24px;
+  }
+  
+  /* status indicators */
+  .badge {
+    font-size: 9px;
+    padding: 2px 6px;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Very small screens */
+  header {
+    padding: 10px 12px;
+  }
+  
+  .dashboard {
+    padding: 12px;
+  }
+  
+  .metric-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  
+  .metric-card {
+    padding: 10px 12px;
+  }
+  
+  .metric-value {
+    font-size: 20px;
+  }
+  
+  .panel {
+    padding: 12px;
+  }
+  
+  .chart-wrap {
+    height: 100px;
+  }
+  
+  .setup-box {
+    padding: 16px 20px;
+  }
+  
+  .endpoint-wrap {
+    gap: 4px;
+  }
+  
+  .endpoint-wrap button {
+    font-size: 11px;
+    padding: 5px 10px;
+  }
+}
