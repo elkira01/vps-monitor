@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { VpsData } from "@/lib/types";
 import { MAX_POINTS } from "@/lib/helpers";
+import { useEndpointHistory } from "./useEndpointHistory";
 
 export function useVpsData() {
   const [connected, setConnected] = useState(false);
@@ -12,6 +13,7 @@ export function useVpsData() {
   const [urlInput, setUrlInput] = useState("");
   const [setupUrl, setSetupUrl] = useState("");
   const [interval, setIntervalVal] = useState(2000);
+  const { endpoints, saveEndpoint, removeEndpoint } = useEndpointHistory();
   const [cpuHistory, setCpuHistory] = useState<number[]>(
     Array(MAX_POINTS).fill(NaN)
   );
@@ -63,15 +65,17 @@ export function useVpsData() {
   const connect = useCallback(() => {
     const u = urlInput.trim().replace(/\/$/, "");
     if (!u) return;
+    saveEndpoint(u);
     startPolling(u, interval);
-  }, [urlInput, interval, startPolling]);
+  }, [urlInput, interval, startPolling, saveEndpoint]);
 
   const connectFromSetup = useCallback(() => {
     const u = setupUrl.trim().replace(/\/$/, "");
     if (!u) return;
     setUrlInput(u);
+    saveEndpoint(u);
     startPolling(u, interval);
-  }, [setupUrl, interval, startPolling]);
+  }, [setupUrl, interval, startPolling, saveEndpoint]);
 
   useEffect(() => {
     if (endpoint) {
@@ -99,6 +103,8 @@ export function useVpsData() {
     cpuHistory,
     lastMaxRx,
     lastMaxTx,
+    endpoints,
+    removeEndpoint,
     connect,
     connectFromSetup,
   };

@@ -51,7 +51,8 @@ header {
   margin-left: auto;
   display: flex; gap: 8px; align-items: center;
 }
-.endpoint-wrap input {
+.endpoint-wrap input,
+.endpoint-new-input {
   background: var(--bg3);
   border: 1px solid var(--border);
   color: var(--texthi);
@@ -63,7 +64,37 @@ header {
   outline: none;
   transition: border .2s;
 }
-.endpoint-wrap input:focus { border-color: var(--green); }
+.endpoint-wrap input:focus,
+.endpoint-new-input:focus { border-color: var(--green); }
+.endpoint-sel {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 12px;
+  padding: 6px 8px;
+  border-radius: 4px;
+  outline: none;
+  cursor: pointer;
+  max-width: 220px;
+}
+.endpoint-new-input {
+  width: 200px;
+}
+.endpoint-remove-btn {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 11px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: color .15s, border-color .15s;
+}
+.endpoint-remove-btn:hover {
+  color: var(--red);
+  border-color: var(--red);
+}
 .endpoint-wrap button {
   background: var(--green);
   color: #000;
@@ -124,6 +155,34 @@ header {
   transition: border .2s;
 }
 .setup-box input:focus { border-color: var(--green); }
+.saved-endpoints { margin-bottom: 4px; }
+.saved-list { display: flex; flex-direction: column; gap: 6px; margin-top: 6px; }
+.saved-row { display: flex; gap: 6px; align-items: center; }
+.saved-ep-btn {
+  flex: 1;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  color: var(--texthi);
+  font-family: inherit;
+  font-size: 12px;
+  padding: 7px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: left;
+  transition: border-color .2s;
+}
+.saved-ep-btn:hover { border-color: var(--green); }
+.saved-remove-btn {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 11px;
+  padding: 6px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: color .15s, border-color .15s;
+}
+.saved-remove-btn:hover { color: var(--red); border-color: var(--red); }
 .setup-box button {
   width: 100%;
   background: var(--green);

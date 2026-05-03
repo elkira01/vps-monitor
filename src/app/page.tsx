@@ -19,6 +19,8 @@ export default function Home() {
     cpuHistory,
     lastMaxRx,
     lastMaxTx,
+    endpoints,
+    removeEndpoint,
     connect,
     connectFromSetup,
   } = useVpsData();
@@ -32,6 +34,8 @@ export default function Home() {
         setUrlInput={setUrlInput}
         interval={interval}
         setIntervalVal={setIntervalVal}
+        endpoints={endpoints}
+        removeEndpoint={removeEndpoint}
         onConnect={connect}
       />
 
@@ -39,6 +43,8 @@ export default function Home() {
         <SetupScreen
           setupUrl={setupUrl}
           setSetupUrl={setSetupUrl}
+          endpoints={endpoints}
+          removeEndpoint={removeEndpoint}
           onConnect={connectFromSetup}
         />
       )}
