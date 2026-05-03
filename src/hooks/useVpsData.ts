@@ -26,7 +26,7 @@ export function useVpsData() {
 
   const fetchData = useCallback(async (ep: string) => {
     try {
-      const res = await fetch(ep, { cache: "no-store" });
+      const res = await fetch(`/api/vps-metrics?url=${encodeURIComponent(ep)}`, { cache: "no-store" });
       if (!res.ok) throw new Error("HTTP " + res.status);
       const d: VpsData = await res.json();
       setData(d);
