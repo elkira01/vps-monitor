@@ -49,12 +49,12 @@ export default function CpuChart({ cpuHistory, cpu }: CpuChartProps) {
   };
 
   return (
-    <div className="panel">
-      <div className="panel-title">
+    <div className="rounded-md border border-border bg-bg2 p-3 md:p-4">
+      <div className="mb-3.5 flex items-center justify-between text-[10px] uppercase tracking-[0.08em] text-muted">
         CPU history
         <span className={badgeClass(cpu)}>{badgeText(cpu)}</span>
       </div>
-      <div className="chart-wrap">
+      <div className="relative h-[100px] min-[480px]:h-[120px] md:h-[140px]">
         <Line data={chartData} options={chartOptions} />
       </div>
     </div>

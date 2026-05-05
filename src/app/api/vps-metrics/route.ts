@@ -17,6 +17,7 @@ export async function GET(req: Request) {
     const data = await res.json()
     return NextResponse.json(data)
   } catch (err) {
+    console.log({err})
     return NextResponse.json(
       { error: err instanceof Error ? err.message : 'fetch failed' },
       { status: 502 }

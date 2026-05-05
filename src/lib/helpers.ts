@@ -27,16 +27,18 @@ export const fmt = {
   ts: () => new Date().toLocaleTimeString(),
 };
 
-export function barColor(pct: number) {
-  if (pct > 85) return "var(--red)";
-  if (pct > 65) return "var(--amber)";
-  return "var(--green)";
+export function barClass(pct: number) {
+  if (pct > 85) return "bg-red";
+  if (pct > 65) return "bg-amber";
+  return "bg-green";
 }
 
 export function badgeClass(pct: number) {
-  if (pct > 85) return "badge badge-red";
-  if (pct > 65) return "badge badge-amber";
-  return "badge badge-green";
+  const base =
+    "rounded-[3px] border px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-[0.05em] md:px-2 md:py-[3px] md:text-[10px]";
+  if (pct > 85) return `${base} border-red/25 bg-red/15 text-red`;
+  if (pct > 65) return `${base} border-amber/25 bg-amber/15 text-amber`;
+  return `${base} border-green/25 bg-green/15 text-green`;
 }
 
 export function badgeText(pct: number) {

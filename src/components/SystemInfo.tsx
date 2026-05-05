@@ -12,38 +12,40 @@ export default function SystemInfo({ data }: SystemInfoProps) {
   const disk = data.disk;
 
   return (
-    <div className="panel">
-      <div className="panel-title">System info</div>
-      <div className="stat-list">
-        <div className="stat-row">
-          <span className="stat-key">Hostname</span>
-          <span className="stat-val">{data.hostname || "—"}</span>
+    <div className="rounded-md border border-border bg-bg2 p-3 md:p-4">
+      <div className="mb-3.5 flex items-center justify-between text-[10px] uppercase tracking-[0.08em] text-muted">
+        System info
+      </div>
+      <div className="mt-3.5 flex flex-col gap-2">
+        <div className="flex justify-between text-xs">
+          <span className="text-muted">Hostname</span>
+          <span className="text-texthi">{data.hostname || "—"}</span>
         </div>
-        <div className="stat-row">
-          <span className="stat-key">CPU cores</span>
-          <span className="stat-val">{data.cpus}</span>
+        <div className="flex justify-between text-xs">
+          <span className="text-muted">CPU cores</span>
+          <span className="text-texthi">{data.cpus}</span>
         </div>
-        <div className="stat-row">
-          <span className="stat-key">Total RAM</span>
-          <span className="stat-val">{fmt.kbToStr(mem.total)}</span>
+        <div className="flex justify-between text-xs">
+          <span className="text-muted">Total RAM</span>
+          <span className="text-texthi">{fmt.kbToStr(mem.total)}</span>
         </div>
-        <div className="stat-row">
-          <span className="stat-key">Total Disk</span>
-          <span className="stat-val">{fmt.kbToStr(disk.total)}</span>
+        <div className="flex justify-between text-xs">
+          <span className="text-muted">Total Disk</span>
+          <span className="text-texthi">{fmt.kbToStr(disk.total)}</span>
         </div>
-        <div className="stat-row">
-          <span className="stat-key">Swap size</span>
-          <span className="stat-val">
+        <div className="flex justify-between text-xs">
+          <span className="text-muted">Swap size</span>
+          <span className="text-texthi">
             {mem.swap_total > 0 ? fmt.kbToStr(mem.swap_total) : "none"}
           </span>
         </div>
-        <div className="stat-row">
-          <span className="stat-key">Cached</span>
-          <span className="stat-val">{fmt.kbToStr(mem.cached)}</span>
+        <div className="flex justify-between text-xs">
+          <span className="text-muted">Cached</span>
+          <span className="text-texthi">{fmt.kbToStr(mem.cached)}</span>
         </div>
-        <div className="stat-row">
-          <span className="stat-key">Buffers</span>
-          <span className="stat-val">{fmt.kbToStr(mem.buffers)}</span>
+        <div className="flex justify-between text-xs">
+          <span className="text-muted">Buffers</span>
+          <span className="text-texthi">{fmt.kbToStr(mem.buffers)}</span>
         </div>
       </div>
     </div>

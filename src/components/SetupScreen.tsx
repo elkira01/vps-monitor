@@ -8,6 +8,9 @@ interface SetupScreenProps {
   onConnect: () => void;
 }
 
+const inputClass =
+  "w-full rounded border border-border bg-bg3 px-3 py-[9px] font-mono text-[13px] text-texthi outline-none transition-colors focus:border-green";
+
 export default function SetupScreen({
   setupUrl,
   setSetupUrl,
@@ -16,17 +19,19 @@ export default function SetupScreen({
   onConnect,
 }: SetupScreenProps) {
   return (
-    <div className="setup">
-      <div className="setup-box">
-        <h2>Connect to your VPS</h2>
+    <div className="flex min-h-[calc(100vh-53px)] flex-col items-center justify-center gap-3 px-4">
+      <div className="flex w-full max-w-[400px] flex-col gap-3.5 rounded-lg border border-border bg-bg2 px-5 py-4 md:max-w-[440px] md:px-8 md:py-7">
+        <h2 className="mb-1 text-base text-texthi md:text-lg">Connect to your VPS</h2>
         {endpoints.length > 0 && (
-          <div className="saved-endpoints">
-            <label>Saved endpoints</label>
-            <div className="saved-list">
+          <div className="mb-1">
+            <label className="text-[11px] uppercase tracking-[0.06em] text-muted">
+              Saved endpoints
+            </label>
+            <div className="mt-1.5 flex flex-col gap-1.5">
               {endpoints.map((ep) => (
-                <div className="saved-row" key={ep}>
+                <div className="flex items-center gap-1.5" key={ep}>
                   <button
-                    className="saved-ep-btn"
+                    className="flex-1 cursor-pointer rounded border border-border bg-bg3 px-2.5 py-[7px] text-left font-mono text-xs text-texthi transition-colors hover:border-green"
                     onClick={() => {
                       setSetupUrl(ep);
                       onConnect();
@@ -35,7 +40,7 @@ export default function SetupScreen({
                     {ep}
                   </button>
                   <button
-                    className="saved-remove-btn"
+                    className="cursor-pointer rounded border border-border bg-transparent px-2 py-1.5 text-[11px] text-muted transition-colors hover:border-red hover:text-red"
                     title="Remove"
                     onClick={() => removeEndpoint(ep)}
                   >
@@ -47,25 +52,37 @@ export default function SetupScreen({
           </div>
         )}
         <div>
-          <label>Agent endpoint URL</label>
+          <label className="text-[11px] uppercase tracking-[0.06em] text-muted">
+            Agent endpoint URL
+          </label>
           <input
             type="text"
+            className={inputClass}
             placeholder="http://123.456.78.90:9999"
             value={setupUrl}
             onChange={(e) => setSetupUrl(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && onConnect()}
           />
         </div>
-        <button onClick={onConnect}>Connect →</button>
-        <div className="hint">
+        <button
+          className="mt-1 w-full cursor-pointer rounded bg-green p-2.5 font-mono text-[13px] font-bold text-black"
+          onClick={onConnect}
+        >
+          Connect →
+        </button>
+        <div className="rounded border border-border bg-bg3 px-3.5 py-2.5 text-[11px] leading-[1.8] text-muted">
           First run the agent on your VPS:
           <br />
-          <code>python3 vps_monitor_agent.py</code>
+          <code className="rounded-[3px] bg-green/10 px-1.5 py-px text-green">
+            python3 vps_monitor_agent.py
+          </code>
           <br />
           <br />
           Open the firewall port (if needed):
           <br />
-          <code>ufw allow 9999/tcp</code>
+          <code className="rounded-[3px] bg-green/10 px-1.5 py-px text-green">
+            ufw allow 9999/tcp
+          </code>
         </div>
       </div>
     </div>
